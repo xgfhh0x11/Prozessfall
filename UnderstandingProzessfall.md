@@ -59,7 +59,7 @@ Single doc: no spec, no todo, just what was done / decided.
   - `prozessfall_todo.md` (TODO list) — deleted
   - `vault_entry_format.md` (vault format spec) — deleted
   
-  Kept: `admin/*` (HBO motivation letter, HVA email, portfolio landing, etc.), `vault_examples/*` (demo writeups), all `.py` and Rust source. From now on this doc (`UnderstandingProzessfall.md`) is the single source of truth.
+  Kept: `admin/*` (local working notes, excluded from the public repo), `vault_examples/*` (demo writeups), all `.py` and Rust source. From now on this doc (`UnderstandingProzessfall.md`) is the single source of truth.
 
 `[next]` Phase 0 startup steps, in order:
   1. `config.toml` — paths in a single place (old P0 #1), everything reads from it
@@ -911,7 +911,7 @@ In the browser it's all instant + smooth. **The web-pivot decision is validated.
 - Company feeds (Intel/Google/Qualcomm/CrowdStrike/ASML) — the sidecar pattern is mechanical
 - Syntactic invariant runtime signals (the spec's "definitely not Y" mechanism) — implemented in the Prokaryotes core but the production signal is still empty
 
-`[next]` At this point the **tool is up + fed**. The strategic question: "build more features" vs "use the tool". The user's preference is the 3rd option (use), and that direction is more critical — it directly benefits the HBO portfolio, it can start producing CVE methodology traces. The build vs use decision is left to the next session.
+`[next]` At this point the **tool is up + fed**. The strategic question: "build more features" vs "use the tool". The user's preference is the 3rd option (use), and that direction is more critical — it directly benefits the project, it can start producing CVE methodology traces. The build vs use decision is left to the next session.
   - `source = "nvd_ingestion"` or `"msrc_ingestion"` → CVE node upsert (the cvss field computed from the signal: delta*10)
   - New CVE → if there's no CWE link, skip for now (CWE info isn't in the signal — adding it to the sidecar is a Phase 2.3 sub-task)
   - user_decision signal → not reflected in the graph (only affects Prokaryotes coherence)
