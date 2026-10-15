@@ -1,0 +1,29 @@
+# Rust
+/target/
+prokaryotes/target/
+**/*.rs.bk
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node / Vite
+node_modules/
+dist/
+*.log
+.vite/
+
+# Local data (regenerable from NVD/MSRC sidecars — not source)
+*.db
+*.sqlite*
+
+# Kernel source checkout used as scan target (not part of this repo)
+linux/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

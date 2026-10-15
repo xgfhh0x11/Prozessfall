@@ -1,0 +1,29 @@
+[package]
+name = "prokaryotes"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "prokaryotes"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "prokaryotes"
+path = "src/main.rs"
+
+[dependencies]
+rusqlite = { version = "0.31", features = ["bundled"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+petgraph = "0.6"
+
+# Daemon-only deps (REST + WebSocket via axum)
+axum = { version = "0.7", features = ["ws"] }
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.5", features = ["trace", "cors"] }
+futures-util = "0.3"
+toml = "0.8"
+
+[[bin]]
+name = "daemon"
+path = "src/bin/daemon.rs"

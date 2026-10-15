@@ -1,0 +1,34 @@
+# Prozessfall configuration
+# Read by both Python (prozessfall_config.py) and Rust (src-tauri/src/config.rs).
+# Python only uses the scalars under [paths] (sidecars/python/event_bus/ingestion
+# Rust-only). Adding a new section does not break the Python side.
+
+[paths]
+prozessfall_db  = "/home/tylersec/prozessfall/prokaryotes/prozessfall.db"
+prokaryotes_db  = "/home/tylersec/prozessfall/prokaryotes/prokaryotes.db"
+prokaryotes_bin = "/home/tylersec/prozessfall/prokaryotes/target/debug/prokaryotes"
+
+[paths.sidecars]
+nvd      = "/home/tylersec/prozessfall/nvd_sidecar.py"
+msrc     = "/home/tylersec/prozessfall/msrc_sidecar.py"
+vault    = "/home/tylersec/prozessfall/vault_sidecar.py"
+semantic = "/home/tylersec/prozessfall/semantic_sidecar.py"
+
+[python]
+bin = "python3"
+
+[event_bus]
+capacity = 256
+
+[ingestion.nvd]
+# 30s grace for startup turbulence; 10min interval for dev visibility;
+# 1-day delta periodic (incremental). Prod cadence will later be 6h-12h.
+periodic_grace_secs    = 30
+periodic_interval_secs = 600
+periodic_days_back     = 1
+
+[ingestion.msrc]
+# MSRC starts with a 30s offset from NVD — so the two sidecars don't fetch at the same time.
+periodic_grace_secs    = 60
+periodic_interval_secs = 600
+periodic_months_back   = 1
